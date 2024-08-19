@@ -10,7 +10,6 @@ while i < n:
             break
         if n % (i + j) == 0:
             resault = resault + str(i) + str(j)
-        j += 1
     i += 1
 
 print(resault)
