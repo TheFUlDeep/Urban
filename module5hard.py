@@ -20,45 +20,44 @@ class Video:
 
 
 class UrTube:
-    # в ТЗ не было сказано добавлять этот атрибут класса, но с ним проще производить поиск
-    users_dict = {}
-    # аналогично с видео
-    videos_dict = {}
-
-    # правда из-за этого у меня по сути не используются списки self.users и self.videos
 
     def __init__(self):
+        # в ТЗ не было сказано добавлять этот атрибут
+        self.users_dict = {}
+        # аналогично с видео
+        self.videos_dict = {}
+        # правда из-за этого у меня по сути не используются списки self.users и self.videos
         self.users = []
         self.videos = []
         self.current_user = None
 
     def log_in(self, nickname, password):
-        if nickname in UrTube.users_dict and UrTube.users_dict[nickname].password == hash(password):
-            self.current_user = UrTube.users_dict[nickname]
+        if nickname in self.users_dict and self.users_dict[nickname].password == hash(password):
+            self.current_user = self.users_dict[nickname]
 
     def register(self, nickname, password, age):
-        if nickname in UrTube.users_dict:
+        if nickname in self.users_dict:
             print(f'Пользователь {nickname} уже существует')
         else:
             user = User(nickname, password, age)
             self.users.append(user)
             self.current_user = user
-            UrTube.users_dict[user.nickname] = user
+            self.users_dict[user.nickname] = user
 
     def log_out(self):
         self.current_user = None
 
     def add(self, *args):
         for i in args:
-            if i.title in UrTube.videos_dict:
+            if i.title in self.videos_dict:
                 continue
             self.videos.append(i)
-            UrTube.videos_dict[i.title] = i
+            self.videos_dict[i.title] = i
 
     def get_videos(self, title):
         # поиск без авторизации разрешен
         res = []
-        for k, v in UrTube.videos_dict.items():
+        for k, v in self.videos_dict.items():
             if title.lower() in k.lower():
                 res.append(k)
         return res
@@ -67,9 +66,9 @@ class UrTube:
         if not self.current_user:
             print("Войдите в аккаунт, чтобы смотреть видео")
             return
-        if not title in UrTube.videos_dict:
+        if not title in self.videos_dict:
             return
-        cur_vid = UrTube.videos_dict[title]
+        cur_vid = self.videos_dict[title]
         if cur_vid.adult_mode and self.current_user.age < 18:
             print("Вам нет 18 лет, пожалуйста покиньте страницу")
             return
