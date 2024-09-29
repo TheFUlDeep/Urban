@@ -2,7 +2,7 @@ from time import sleep
 
 
 class User:
-    def __init__(self, nickname, password, age=0):
+    def __init__(self, nickname, password, age):
         self.nickname = nickname
         self.password = hash(password)
         self.age = age
