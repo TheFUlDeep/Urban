@@ -8,7 +8,7 @@ class WordsFinder:
         res = string
         for char in self.__CHARS_TO_REMOVE:
             while char in res:
-                res = str.replace(string, char, "")
+                res = str.replace(res, char, "")
         return res
 
     def get_all_words(self):
