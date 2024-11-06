@@ -16,8 +16,7 @@ def get_files():
 
 def main():
     started_at = time.time()
-    for file in get_files():
-        read_info(file)
+    list(map(lambda file: read_info(file), get_files()))
     print(f'{datetime.timedelta(seconds=time.time() - started_at)} (линейный)')
 
     processes = [multiprocessing.Process(target=read_info, args=(file,)) for file in get_files()]
