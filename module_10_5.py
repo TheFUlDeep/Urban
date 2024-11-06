@@ -20,10 +20,7 @@ def main():
         read_info(file)
     print(f'{datetime.timedelta(seconds=time.time() - started_at)} (линейный)')
 
-    processes = []
-    for file in get_files():
-        process = multiprocessing.Process(target=read_info, args=(file,))
-        processes.append(process)
+    processes = [multiprocessing.Process(target=read_info, args=(file,)) for file in get_files()]
 
     started_at = time.time()
     for process in processes:
