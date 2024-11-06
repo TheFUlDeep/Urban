@@ -23,11 +23,9 @@ def main():
     processes = [multiprocessing.Process(target=read_info, args=(file,)) for file in get_files()]
 
     started_at = time.time()
-    for process in processes:
-        process.start()
+    list(map(lambda x: x.start(), processes))
+    list(map(lambda x: x.join(), processes))
 
-    for process in processes:
-        process.join()
     print(f'{datetime.timedelta(seconds=time.time() - started_at)} (многопроцессорный)')
 
 
