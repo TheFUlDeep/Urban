@@ -21,7 +21,7 @@ def introspection_info(obj):
 
     res['isclass'] = inspect.isclass(obj)
 
-    res['IsInstanceOfException'] = isinstance(obj, Exception)
+    res['isinstance_of_exception'] = isinstance(obj, Exception)
     return res
 
 
