@@ -16,7 +16,7 @@ async def start(msg):
 
 
 @dp.message()
-async def start(msg):
+async def all_massages(msg):
     print('Введите команду /start, чтобы начать общение')
 
 
