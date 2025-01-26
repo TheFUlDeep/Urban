@@ -27,7 +27,7 @@ dp = Dispatcher(storage=MemoryStorage())
 
 
 @dp.message(CommandStart())
-async def set_age(msg, state):
+async def start(msg, state):
     await msg.answer("Привет! Я бот помогающий твоему здоровью", reply_markup=kb)
 
 
