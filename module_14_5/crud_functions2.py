@@ -36,7 +36,7 @@ def initiate_db():
 
 
 def get_all_products():
-    connection = sqlite3.connect('db.db')
+    connection = sqlite3.connect('db2.db')
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM Products")
     products = cursor.fetchall()
